@@ -1,5 +1,8 @@
 import React from 'react';
 
+import jss from 'jss'
+import preset from 'jss-preset-default'
+
 import LogsContainer from './containers/Log.js';
 import CommandsContainer from './containers/Commands.js';
 import Camera from './components/camera/camera.js';
@@ -7,6 +10,7 @@ import Camera from './components/camera/camera.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    jss.setup(preset())
   }
   render() {
     return (
