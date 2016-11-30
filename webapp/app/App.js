@@ -7,10 +7,8 @@ import Camera from './components/camera/camera.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {test: 'foo'};
   }
   render() {
-        //<Log />
     return (
       <div style={styles.container}>
         <Camera />

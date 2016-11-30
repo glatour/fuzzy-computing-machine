@@ -4,6 +4,7 @@ import Log from '../components/log/log'
 
 const mapStateToProps = (state) => {
   return {
+    logEntries: state.logs,
     items: [
         {text: '1', key: 1},
         {text: '2', key: 2},
