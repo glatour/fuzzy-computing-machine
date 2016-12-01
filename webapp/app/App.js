@@ -5,7 +5,7 @@ import preset from 'jss-preset-default'
 
 import LogsContainer from './containers/Log.js';
 import CommandsContainer from './containers/Commands.js';
-import Camera from './components/camera/camera.js';
+import CameraContainer from './containers/Camera.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-        <Camera />
+        <CameraContainer />
         <LogsContainer />
         <CommandsContainer />
       </div>
@@ -24,6 +24,7 @@ export default class App extends React.Component {
 
 const styles = {
   container: {
+    overflow: 'hidden',
     'display': 'flex',
     'alignItems': 'center',
     'position': 'absolute',

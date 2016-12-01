@@ -8,17 +8,14 @@ import Button from './button.js';
 class Commands extends React.Component {
   constructor(props) {
     super(props);
-    this.sendCommand = this.sendCommand.bind(this);
-  }
-
-  sendCommand(command) {
-    this.props.sendCommand(command);
   }
 
   render() {
     return (
         <div style={ styles.container }>
-          <div style={ styles.joystick }><Joystick /></div>
+          <div style={ styles.joystick }>
+            <Joystick onMove={ (e) => {this.props.onMove(e) } } onRelease={ () => {this.props.onRelease() } }/>
+          </div>
           
           {/*<div style={ styles.containerTop }>
             <Button onClick={ () => { this.sendCommand(COMMANDS.FORWARD); } }>
@@ -42,7 +39,8 @@ class Commands extends React.Component {
 }
 
 Commands.propTypes = {
-    sendCommand: PropTypes.func.isRequired
+    onMove: PropTypes.func.isRequired,
+    onRelease: PropTypes.func.isRequired
 }
 
 export default Commands;

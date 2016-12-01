@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { sendCommand } from '../actions'
+import { sendCommand, sendJoystickMoving,  sendJoystickStop} from '../actions'
 import Commands from '../components/commands/commands'
 
 const mapStateToProps = (state) => {
@@ -8,8 +8,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return { 
-      sendCommand: (command) => {
-          dispatch(sendCommand(command));
+      onMove: (data) => {
+          dispatch(sendJoystickMoving(data));
+      },
+      onRelease: () => {
+          dispatch(sendJoystickStop());
       }
   }
 }

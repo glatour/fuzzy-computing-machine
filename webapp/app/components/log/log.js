@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
+import * as Bacon from 'baconjs'
 
 class Log extends React.Component {
   
@@ -6,9 +7,9 @@ class Log extends React.Component {
     super(props);
     this.timeAgo.bind(this);
 
-    setInterval(function() {
+    Bacon.fromPoll(1000 * 60, function() {
         this.forceUpdate();
-    }.bind(this), 2000);
+    })
   }
 
   componentDidUpdate() {
@@ -23,7 +24,7 @@ class Log extends React.Component {
   render() {
     var items = this.props.logEntries.map(function(item) {
         return (
-            <div key={ item.timestamp } style={ styles.log }>&gt;&nbsp;<div style={ styles.time }>{ this.timeAgo(item.timestamp) }</div> <div style={ styles.command }>command '{ item.command }' was sent</div></div>
+            <div key={ item.timestamp } style={ styles.log }>&gt;&nbsp;<div style={ styles.time }>{ this.timeAgo(item.timestamp) }</div> <div style={ styles.command }>command '{ item.command }' sent</div></div>
         );
     }.bind(this));
 
@@ -46,7 +47,7 @@ export default Log;
 
 const styles = {
     'container': {
-        width: '100px',
+        width: '400px',
         height: '100px',
         overflow: 'scroll',        
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
@@ -56,7 +57,6 @@ const styles = {
         position: 'absolute',
         top: '10px',
         right: '10px',
-        width: '300px',
         padding: '8px',
         fontSize: '12px'
     },

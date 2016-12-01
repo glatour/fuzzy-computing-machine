@@ -49,7 +49,7 @@ export default class Camera extends React.Component {
             eDeltaY: e.deltaY
         }
     })
-    .scan({eDeltaX: 0, eDeltaY: 0}, function(a, b) {
+    .scan({ eDeltaX: 0, eDeltaY: 0 }, function(a, b) {
         return {
             eDeltaX: b.eDeltaX,
             eDeltaY: b.eDeltaY,
@@ -62,7 +62,8 @@ export default class Camera extends React.Component {
     })
     .onValue(function(value) {
         console.info(`pan: deltaX: ${value.deltaX}\tdeltaY: ${value.deltaY}`);
-    });
+        this.props.onPan(value);
+    }.bind(this));
   }
 }
 
@@ -80,7 +81,7 @@ const styles = {
       userSelect: 'none',
       WebkitUserDrag: 'none'
     },
-    "video": {
+    video: {
         width: '100%',
         height: '100%'
     }
