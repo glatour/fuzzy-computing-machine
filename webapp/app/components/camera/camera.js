@@ -9,27 +9,32 @@ export default class Camera extends React.Component {
   render() {
     var that = this;
 
-    // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-    // if (navigator.getUserMedia) {       
-    //     navigator.getUserMedia({video: true}, handleVideo, videoError);
-    // }
-    // function handleVideo(stream) {
-    //     that.video.src = window.URL.createObjectURL(stream);
-    // }
-    // function videoError(e) {
-    //     console.error(e);
-    // }
-
     return (
-        //<video  style={styles.video} autoPlay="true"
-        //        ref={(ele) => { this.video = ele; }} />
         <div style={ styles.cameraContainer } ref="videoContainer">
+            {/*<video  style={styles.video} autoPlay="true"
+                     ref="video"/>*/}
             <img style={ styles.image } src={ "http://i.imgur.com/VG2UvcY.jpg" } ref="video" />
         </div>
     );
   }
 
   componentDidMount() {
+
+    // initialize camera
+    // let that = this;
+    // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+    // if (navigator.getUserMedia) {       
+    //     navigator.getUserMedia({video: true}, handleVideo, videoError);
+    // }
+    // function handleVideo(stream) {
+    //     that.refs.video.src = window.URL.createObjectURL(stream);
+    // }
+    // function videoError(e) {
+    //     console.error(e);
+    // }
+
+
+
     var hammertime = new Hammer(this.refs.videoContainer, {
       domEvents: true
     });
@@ -71,7 +76,8 @@ const styles = {
     cameraContainer: {
       overflow: 'hidden', 
       userSelect: 'none',
-      WebkitUserDrag: 'none'
+      WebkitUserDrag: 'none',
+      width: '100%'
     },
     image: {
         position: 'absolute',

@@ -7,9 +7,9 @@ class Log extends React.Component {
     super(props);
     this.timeAgo.bind(this);
 
-    Bacon.fromPoll(1000 * 60, function() {
+    Bacon.fromPoll(1000 * 60).onValue(function() {
         this.forceUpdate();
-    })
+    }.bind(this))
   }
 
   componentDidUpdate() {
