@@ -10,7 +10,6 @@ import Camera from './components/camera/camera.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    jss.setup(preset())
   }
   render() {
     return (
