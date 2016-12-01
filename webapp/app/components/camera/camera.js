@@ -57,8 +57,11 @@ export default class Camera extends React.Component {
             deltaY: b.eDeltaY - a.eDeltaY 
         }
     })
+    .filter(function(value){
+        return !!value.deltaX;
+    })
     .onValue(function(value) {
-        console.log(`deltaX: ${value.deltaX}\tdeltaY: ${value.deltaY}`);
+        console.info(`pan: deltaX: ${value.deltaX}\tdeltaY: ${value.deltaY}`);
     });
   }
 }
